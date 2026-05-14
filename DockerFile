@@ -3,12 +3,12 @@ FROM python:3.10-slim
 WORKDIR /api
 
 COPY backend/ ./backend/
-COPY requirements.txt /api
-COPY /model/artifact/ ./model/artifact
+COPY requirements.txt .
+COPY /model/artifact/ ./model/artifact/
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD [ "uvicorn","backend.api:app","--host", "0.0.0.0", "--port", "8000"]
 

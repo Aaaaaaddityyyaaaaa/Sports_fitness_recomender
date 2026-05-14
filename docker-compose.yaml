@@ -1,0 +1,21 @@
+services :
+  backend : 
+    build:
+      context: .
+      dockerfile : DockerFile
+    ports:
+      - "8000:8000"
+
+  frontend :
+    
+    image : python:3.10-slim
+    working_dir : /frontend
+    volumes :
+      - ./template:/frontend
+    ports :
+      - "8501:8501"
+    command: >
+      sh -c "pip install streamlit requests &&
+      streamlit run streamlit_app.py --server.port=8501 --server.address=0.0.0.0"
+    depends_on:
+      - backend
