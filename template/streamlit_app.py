@@ -76,7 +76,7 @@ if submitted:
 
     }
 
-    response = requests.post("http://backend:8000/predict", json=payload)
+    response = requests.post("https://aaaadddittyyaaa-sportsopt.hf.space/predict", json=payload)
 
     if response.status_code == 200:
         result = response.json()
